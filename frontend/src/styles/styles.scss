@@ -1,0 +1,55 @@
+body {
+    font-family: RobotoMedium, sans-serif;
+}
+
+@font-face {
+    font-family: 'SecretService';
+    src: url('../fonts/SecretService-Regular.ttf') format('truetype'),
+    url('../fonts/SecretService-Regular.woff') format('woff'),
+    url('../fonts/SecretService-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Inter;
+    src: url('../fonts/Inter-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: Roboto;
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: RobotoMedium;
+    src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+.layout {
+
+    .logoLF {
+        margin-left: 50px;
+        margin-top: 40px;
+        margin-bottom: 4px;
+
+
+        .secretservice {
+            font-family: 'SecretService', sans-serif;
+            color: #0D6EFD;
+            font-size: 28.65px;
+            line-height: 10px;
+        }
+
+        .fontfinance {
+            color: #052C65;
+            font-size: 6.88px;
+            font-family: Inter, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 8.25px;
+            margin-left: 9px;
+        }
+    }
+    .nav.nav-pills {
+        font-family: Roboto, sans-serif;
+    }
+}
