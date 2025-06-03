@@ -1,0 +1,30 @@
+<section class="main">
+    <div class="container">
+        <div class="main_title">Главная</div>
+        <div class="main_switch d-flex gap-3">
+            <button type="button" class="btn btn-outline-secondary">Сегодня</button>
+            <button type="button" class="btn btn-outline-secondary">Неделя</button>
+            <button type="button" class="btn btn-outline-secondary">Месяц</button>
+            <button type="button" class="btn btn-outline-secondary">Год</button>
+            <button type="button" class="btn btn-outline-secondary">Все</button>
+            <button type="button" class="btn btn-outline-secondary">Интервал</button>
+            <div class="main_switch-data d-flex">
+                <label for="startDate">с</label>
+                <input type="text" class="datepicker" placeholder="Дата" id="startDate">
+                <label for="endDate">по</label>
+                <input type="text" class="datepicker" placeholder="Дата" id="endDate">
+            </div>
+        </div>
+        <div class="main_chartPies d-flex">
+            <div class="main_chartPies-left text-center">
+                <div class="main_chartPies-left_title">Доходы</div>
+                <canvas id="myPieChart-left" width="340" height="340"></canvas>
+            </div>
+            <div class="main_chartPies-vr"></div>
+            <div class="main_chartPies-right text-center">
+                <div class="main_chartPies-right_title">Расходы</div>
+                <canvas id="myPieChart-right" width="340" height="340"></canvas>
+            </div>
+        </div>
+    </div>
+</section>

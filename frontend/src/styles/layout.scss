@@ -1,0 +1,137 @@
+$colorText: #052c65;
+
+
+.layout {
+
+    .logoLF {
+        margin-left: 50px;
+        margin-top: 45px;
+        margin-bottom: 4px;
+
+
+        .secretservice {
+            font-family: 'SecretService', sans-serif;
+            color: #0D6EFD;
+            font-size: 28.65px;
+            line-height: 10px;
+        }
+
+        .fontfinance {
+            color: #052C65;
+            font-size: 6.88px;
+            font-family: Inter, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 8.25px;
+            margin-left: 9px;
+        }
+    }
+
+    .layoutIn {
+        padding: 40px 20px 0 20px;
+
+        .nav.nav-pills {
+            font-family: Roboto, sans-serif;
+            font-size: 14px;
+
+            .nav-link.active {
+                color: white;
+                padding-right: 0;
+            }
+
+            .nav-link {
+                color: $colorText;
+                padding-right: 0;
+            }
+
+            .mb-1.flex-grow-1 {
+                .btn-toggle {
+                    //color: rgba(0, 0, 0, .65);
+                    color: $colorText;
+                    background-color: transparent;
+                    width: 100%;
+                    justify-content: space-between;
+                    padding: 8px 10px 8px 15px;
+                    font-size: 14px;
+                }
+
+                .btn-toggle:hover,
+                .btn-toggle:focus {
+                    color: white;
+                    background-color: #0D6EFD;
+                    border-radius: 6px;
+                }
+
+                .btn-toggle::after {
+                    width: 1.25em;
+                    line-height: 0;
+                    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='rgba%285, 44, 101, 1%29' d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");
+                    transition: transform .35s ease;
+                    transform-origin: .5em 50%;
+                }
+
+                .btn-toggle:hover::after,
+                .btn-toggle:focus::after {
+                    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");
+
+                }
+
+                .btn-toggle[aria-expanded="true"] {
+                    color: white;
+                    background-color: #0D6EFD;
+                    border-radius: 5px 5px 0 0;
+                }
+
+                .btn-toggle[aria-expanded="true"]::after {
+                    transform: rotate(90deg);
+                    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z'/%3E%3C/svg%3E");
+
+                }
+
+                .btn-toggle-nav a {
+                    padding: 8px 10px 8px 15px;
+                    margin-top: .125rem;
+                    color: #052C65;
+
+                }
+
+                .btn-toggle-nav li:hover,
+                .btn-toggle-nav li:focus {
+                    background-color: #0D6EFD;
+                    border-radius: 0 0 5px 5px;
+                }
+
+                .btn-toggle-nav li:hover:first-child {
+                    border-radius: 0;
+                }
+
+                .btn-toggle-nav li:hover a {
+                    color: white;
+
+                }
+
+            }
+
+            .mb-1.flex-grow-1:has(.btn-toggle[aria-expanded="true"]) {
+                border-radius: 6px;
+                border: 1px solid #0D6EFD;
+            }
+        }
+    }
+    .balans {
+        padding: 0 20px 0 20px;
+        font-size: 14px;
+        color: #052c65;
+        span {
+            color: #0d6efd;
+        }
+    }
+    .user-layout {
+        padding: 0 20px 20px 20px;
+        a {
+            color: $colorText;
+            line-height: 24px;
+            font-size: 14px;
+            font-family: Roboto, sans-serif;
+        }
+    }
+}

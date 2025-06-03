@@ -1,19 +1,23 @@
+import {Main} from "./components/main";
+import {FileUtils} from "./utils/file-utils";
+
 export class Router {
     constructor() {
         this.titlePageElement = document.getElementById('title');
         this.contentPageElement = document.getElementById('content');
+        this.bootstrapStyleElement = document.getElementById('bootstrap_style');
 
         this.routes = [
             {
                 route: '/',
-                title: 'Dashboard',
-                filePathTemplate: '/templates/pages/dashboard.html',
+                title: 'Main',
+                filePathTemplate: '/templates/pages/main.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    // new Dashboard(this.openNewRoute.bind(this));
+                    new Main();
                 },
-                styles: [''],
-                scripts: ['']
+                styles: ['bootstrap-datepicker.css'],
+                scripts: ['chart.umd.js', 'bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
             },
             {
                 route: '/404',
@@ -49,19 +53,26 @@ export class Router {
         // document.addEventListener('click', this.clickHandler.bind(this));
     }
 
+    async openNewRoute(url) {
+        const currentRoute = window.location.pathname;
+        history.pushState({}, '', url);
+        await this.activateRoute(null, currentRoute);
+
+    }
 
     async activateRoute(e, oldRoute = null) {
 
         const urlRoute = window.location.pathname;
         const newRoute = this.routes.find(item => item.route === urlRoute);
         if (newRoute) {
-            if (newRoute.styles && newRoute.styles.length > 0) {// newRoute.styles.forEach(style => {
-                    // FileUtils.loadPageStyle('/css/' + style, this.adminlteStyleElement);
-                // });
+            if (newRoute.styles && newRoute.styles.length > 0) {
+                newRoute.styles.forEach(style => {
+                    FileUtils.loadPageStyle('/css/' + style, this.bootstrapStyleElement);
+                });
             }
             if (newRoute.scripts && newRoute.scripts.length > 0) {
                 for (const script of newRoute.scripts) {
-                    // await FileUtils.loadPageScript('/js/' + script);
+                    await FileUtils.loadPageScript('/js/' + script);
                 }
 
             }
@@ -78,8 +89,8 @@ export class Router {
                     this.contentPageElement.innerHTML =
                         await fetch(newRoute.useLayout).then(response => response.text());
                     contentBlock = document.getElementById('content-layout');
-                    document.body.classList.add('sidebar-mini');
-                    document.body.classList.add('layout-fixed');
+                    // document.body.classList.add('sidebar-mini');
+                    // document.body.classList.add('layout-fixed');
 
                     this.profileNameElement = document.getElementById('profile-name');
                     // if (!this.userName) {

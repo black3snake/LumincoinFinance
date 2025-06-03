@@ -45,11 +45,16 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 { from: "./src/templates", to: "./templates" },
-                // { from: "./src/static/images", to: "./images" },
+                { from: "./src/static/images", to: "./images" },
                 { from: "./src/fonts", to: "./fonts" },
                 { from: "./.env", to: "./" },
                 { from: "./node_modules/bootstrap/dist/css/bootstrap.min.css", to: "./css" },
                 { from: "./node_modules/bootstrap/dist/js/bootstrap.min.js", to: "./js" },
+                { from: "./node_modules/jquery/dist/jquery.min.js", to: "./js" },
+                { from: "./node_modules/chart.js/dist/chart.js", to: "./js" },
+                { from: "./node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js", to: "./js" },
+                { from: "./node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css", to: "./css" },
+                { from: "./node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min.js", to: "./js" },
 
             ],
         }),

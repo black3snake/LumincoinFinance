@@ -1,5 +1,13 @@
+@use "layout";
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: RobotoMedium, sans-serif;
+    color: #052c65;
 }
 
 @font-face {
@@ -25,31 +33,66 @@ body {
     font-weight: 500;
 }
 
-.layout {
-
-    .logoLF {
-        margin-left: 50px;
-        margin-top: 40px;
-        margin-bottom: 4px;
-
-
-        .secretservice {
-            font-family: 'SecretService', sans-serif;
-            color: #0D6EFD;
-            font-size: 28.65px;
-            line-height: 10px;
+.main {
+    .container {
+        margin-top: 80px;
+        padding-left: 61px;
+        .main_title {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+        .main_switch {
+            flex-wrap: wrap;
+            button {
+                width: 100px;
+            }
+            .main_switch-data {
+                align-items: center;
+                justify-items: center;
+                input.datepicker {
+                    border: none;
+                    outline: none;
+                    width: 100px;
+                    text-align: center;
+                    cursor: pointer;
+                    &::placeholder {
+                        text-decoration-line: underline;
+                        text-decoration-skip-ink: none;
+                    }
+                }
+            }
         }
 
-        .fontfinance {
-            color: #052C65;
-            font-size: 6.88px;
-            font-family: Inter, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 8.25px;
-            margin-left: 9px;
+        .main_chartPies {
+            margin-top: 80px;
+            justify-content: start;
+            .main_chartPies-left {
+                max-width: 100%;
+                margin-right: 85px;
+                .main_chartPies-left_title {
+                    margin-bottom: 40px;
+                    font-size: 28px;
+                    color: #290661;
+                }
+
+            }
+            .main_chartPies-right {
+                margin-left: 85px;
+                .main_chartPies-right_title {
+                    margin-bottom: 40px;
+                    font-size: 28px;
+                    color: #290661;
+                }
+                #myPieChart-right {
+                    //height: 414px;
+                }
+            }
+            .main_chartPies-vr {
+                width: 1px;
+                height: 340px;
+                background: #D9D9D9;
+                margin-top: auto;
+            }
         }
-    }
-    .nav.nav-pills {
-        font-family: Roboto, sans-serif;
     }
 }

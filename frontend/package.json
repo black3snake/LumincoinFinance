@@ -12,7 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^5.3.6",
-    "dotenv-webpack": "^8.1.0"
+    "bootstrap-datepicker": "^1.10.0",
+    "chart.js": "^4.4.9",
+    "dotenv-webpack": "^8.1.0",
+    "jquery": "^3.7.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^13.0.0",
