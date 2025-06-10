@@ -1,5 +1,13 @@
 import {Main} from "./components/main";
 import {FileUtils} from "./utils/file-utils";
+import {IncomeList} from "./components/income/income-list";
+import {IncomeCreate} from "./components/income/income-create";
+import {ExpensesList} from "./components/expenses/expenses-list";
+import {ExpensesCreate} from "./components/expenses/expenses-create";
+import {ExpensesEdit} from "./components/expenses/expenses-edit";
+import {IncomeEdit} from "./components/income/income-edit";
+import {IncomeExpensesList} from "./components/income-expenses/income-expenses-list";
+import {IncomeExpensesNew} from "./components/income-expenses/income-expenses-new";
 
 export class Router {
     constructor() {
@@ -10,7 +18,7 @@ export class Router {
         this.routes = [
             {
                 route: '/',
-                title: 'Main',
+                title: 'Главная',
                 filePathTemplate: '/templates/pages/main.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
@@ -40,6 +48,103 @@ export class Router {
                     // document.body.style.height = 'auto';
                 },
                 styles: ['']
+            },
+            {
+                route: '/income',
+                title: 'Доходы',
+                filePathTemplate: '/templates/pages/income/list.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new IncomeList(this.openNewRoute.bind(this));
+                },
+                // styles: [''],
+                // scripts: ['']
+            },
+            {
+                route: '/income/create',
+                title: 'Создание категории доходов',
+                filePathTemplate: '/templates/pages/income/create.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new IncomeCreate(this.openNewRoute.bind(this));
+                },
+                // styles: [''],
+                // scripts: ['']
+            },
+            {
+                route: '/income/edit',
+                title: 'Редактирование категории доходов',
+                filePathTemplate: '/templates/pages/income/edit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new IncomeEdit(this.openNewRoute.bind(this));
+                },
+                // styles: [''],
+                // scripts: ['']
+            },
+            {
+                route: '/expenses',
+                title: 'Расходы',
+                filePathTemplate: '/templates/pages/expenses/list.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new ExpensesList(this.openNewRoute.bind(this));
+                },
+                // styles: [''],
+                // scripts: ['']
+            },
+            {
+                route: '/expenses/create',
+                title: 'Создание категории расходов',
+                filePathTemplate: '/templates/pages/expenses/create.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new ExpensesCreate(this.openNewRoute.bind(this));
+                },
+            },
+            {
+                route: '/expenses/edit',
+                title: 'Редактирование категории расходов',
+                filePathTemplate: '/templates/pages/expenses/edit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new ExpensesEdit(this.openNewRoute.bind(this));
+                },
+                // styles: [''],
+                // scripts: ['']
+            },
+            {
+                route: '/income-expenses',
+                title: 'Доходы и расходы',
+                filePathTemplate: '/templates/pages/income-expenses/list.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new IncomeExpensesList(this.openNewRoute.bind(this));
+                },
+                styles: ['bootstrap-datepicker.css', 'all.min.css'],
+                scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
+            },
+            {
+                route: '/income-expenses/new',
+                title: 'Создание дохода/расхода',
+                filePathTemplate: '/templates/pages/income-expenses/new.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new IncomeExpensesNew(this.openNewRoute.bind(this));
+                },
+                styles: ['bootstrap-datepicker.css' ],
+                scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
+            },
+            {
+                route: '/income-expenses/edit',
+                title: 'Редактирование дохода/расхода',
+                filePathTemplate: '/templates/pages/income-expenses/edit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new IncomeExpensesNew(this.openNewRoute.bind(this));
+                },
+                styles: ['bootstrap-datepicker.css' ],
+                scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
             },
 
         ];

@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const Dotenv = require('dotenv-webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/app.js',
@@ -28,9 +27,8 @@ module.exports = {
             {
                 test: /\.scss$/i,
                 use: [
-                    MiniCssExtractPlugin.loader,
                     // Creates `style` nodes from JS strings
-                    // "style-loader",
+                    "style-loader",
                     // Translates CSS into CommonJS
                     "css-loader",
                     // Compiles Sass to CSS
@@ -41,9 +39,6 @@ module.exports = {
     },
     plugins: [
         new Dotenv(),
-        new MiniCssExtractPlugin({
-            filename: 'style.css'
-        }),
         new HtmlWebpackPlugin({
             template: "./index.html"
         }),

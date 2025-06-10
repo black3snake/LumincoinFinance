@@ -1,0 +1,29 @@
+.income-expenses-new {
+    .container {
+        margin-top: 80px;
+        padding-left: 61px;
+
+        .income-expenses-new_title {
+            font-size: 40px;
+            margin-bottom: 40px;
+        }
+        .income-expenses-new_content {
+            font-family: Roboto, sans-serif;
+            .form-control {
+                outline: none;
+                appearance: none;
+                color: #333;
+                cursor: pointer;
+                &:focus {
+                    box-shadow: none;
+                }
+                .selected {
+                }
+            }
+            .select.selected option:checked {
+                   color: #ff6d02;
+
+            }
+        }
+    }
+}

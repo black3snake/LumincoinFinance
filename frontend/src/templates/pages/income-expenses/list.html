@@ -1,0 +1,40 @@
+<section class="income-expenses">
+    <div class="container">
+        <div class="income-expenses_title">Доходы и расходы</div>
+        <div class="income-expenses-action d-flex">
+            <button type="button" class="btn btn-success" id="createIncome">Создать доход</button>
+            <button type="button" class="btn btn-danger" id="createExpense">Создать расход</button>
+        </div>
+        <div class="income-expenses_switch d-flex gap-3">
+            <button type="button" class="btn btn-outline-secondary">Сегодня</button>
+            <button type="button" class="btn btn-outline-secondary">Неделя</button>
+            <button type="button" class="btn btn-outline-secondary">Месяц</button>
+            <button type="button" class="btn btn-outline-secondary">Год</button>
+            <button type="button" class="btn btn-outline-secondary">Все</button>
+            <button type="button" class="btn btn-outline-secondary">Интервал</button>
+            <div class="income-expenses_switch-data d-flex">
+                <label for="startDate">с</label>
+                <input type="text" class="datepicker" placeholder="Дата" id="startDate">
+                <label for="endDate">по</label>
+                <input type="text" class="datepicker" placeholder="Дата" id="endDate">
+            </div>
+        </div>
+        <div class="income-expenses_table" id="incomeExpensesTable">
+            <table id="data-table" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>№ операции</th>
+                    <th>Тип</th>
+                    <th>Категория</th>
+                    <th>Сумма</th>
+                    <th>Дата</th>
+                    <th>Комментарий</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="records">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
