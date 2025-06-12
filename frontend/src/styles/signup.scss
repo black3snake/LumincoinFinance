@@ -1,0 +1,150 @@
+.signup-page {
+    align-items: center;
+    //background-color: #e9ecef;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    min-height: 100%;
+
+    #content {
+        padding-top: 70px;
+
+        .signup-box {
+            width: 400px;
+
+            .signup-logo {
+                text-align: center;
+                margin-bottom: 50px;
+
+                a.logoLF {
+                    .secretservice {
+                        font-family: 'SecretService', sans-serif;
+                        color: #0D6EFD;
+                        font-size: 50px;
+                        line-height: 10px;
+                    }
+
+                    .fontfinance {
+                        color: #052C65;
+                        font-size: 12px;
+                        font-family: Inter, sans-serif;
+                        text-transform: uppercase;
+                        letter-spacing: 15px;
+                        margin-left: 18px;
+                    }
+                }
+            }
+
+            .card {
+                border: none;
+
+                .card-body {
+                    padding: 0;
+
+                    p.login-box-msg {
+                        font-size: 40px;
+                        text-align: center;
+                        margin-bottom: 1.25rem;
+                        color: #052C65;
+                    }
+
+                    .input-group {
+                        //position: relative;
+                        //display: flex;
+                        //flex-wrap: wrap;
+                        //align-items: stretch;
+                        //width: 100%;
+
+                        .input-group-append {
+                            display: flex;
+                            margin-right: -1px;
+                            width: 38px;
+
+                            .input-group-text {
+                                flex: auto;
+                                border-top-right-radius: 0;
+                                border-bottom-right-radius: 0;
+
+                                svg {
+                                    fill: #6C757D;
+                                }
+                            }
+                        }
+
+                        .form-control {
+                            border-top-right-radius: 0.375rem;
+                            border-bottom-right-radius: 0.375rem;
+                        }
+                    }
+
+                    .input-group > .form-control {
+                        position: relative;
+                        flex: 1 1 auto;
+                        width: 1%;
+                        min-width: 0;
+                        margin-bottom: 0;
+                        box-shadow: none;
+
+                        &::placeholder {
+                            font-family: Roboto, sans-serif;
+                            font-size: 15px;
+                            color: #6C757D;
+                        }
+                    }
+
+                    .row {
+                        .col-12 {
+                            .icheck-primary {
+
+                            }
+
+                            .icheck-primary > input:first-child {
+
+                            }
+
+                            .icheck-primary > label {
+                                font-family: Roboto, sans-serif;
+                                font-size: 12px;
+
+                            }
+
+                            .icheck-primary > input:first-child + label::before {
+                                width: 18px;
+                                height: 18px;
+                                border-radius: 4px;
+                            }
+
+                            .icheck-primary > input:first-child + label::after {
+                                top: -2px;
+                                left: -2px;
+
+                            }
+                        }
+                    }
+
+                    .row {
+                        .col-12 {
+                            .btn-block {
+                                display: block;
+                                width: 100%
+                            }
+                        }
+                    }
+
+                    .signup-link_login {
+                        font-family: Roboto, sans-serif;
+                        font-size: 12px;
+                        text-align: center;
+
+                        .signup-link_a {
+                            color: #0D6EFD;
+                            text-decoration-skip-ink: none;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

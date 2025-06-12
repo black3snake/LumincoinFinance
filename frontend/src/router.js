@@ -8,6 +8,9 @@ import {ExpensesEdit} from "./components/expenses/expenses-edit";
 import {IncomeEdit} from "./components/income/income-edit";
 import {IncomeExpensesList} from "./components/income-expenses/income-expenses-list";
 import {IncomeExpensesNew} from "./components/income-expenses/income-expenses-new";
+import {IncomeExpensesEdit} from "./components/income-expenses/income-expenses-edit";
+import {Login} from "./components/auth/login";
+import {SignUp} from "./components/auth/sign-up";
 
 export class Router {
     constructor() {
@@ -39,15 +42,30 @@ export class Router {
                 filePathTemplate: '/templates/pages/auth/login.html',
                 useLayout: false,
                 load: () => {
-                    // document.body.classList.add('login-page');
-                    // document.body.style.height = '100vh';
-                    // new Login(this.openNewRoute.bind(this));
+                    document.body.classList.add('login-page');
+                    document.body.style.height = '100vh';
+                    new Login(this.openNewRoute.bind(this));
                 },
                 unload: () => {
-                    // document.body.classList.remove('login-page');
-                    // document.body.style.height = 'auto';
+                    document.body.classList.remove('login-page');
+                    document.body.style.height = 'auto';
                 },
-                styles: ['']
+                styles: ['icheck-bootstrap.min.css']
+            },
+            {
+                route: '/sign-up',
+                title: 'Регистрация',
+                filePathTemplate: '/templates/pages/auth/sign-up.html',
+                useLayout: false,
+                load: () => {
+                    document.body.classList.add('signup-page');
+                    document.body.style.height = '100vh';
+                    new SignUp(this.openNewRoute.bind(this));
+                },
+                unload: () => {
+                    document.body.classList.remove('signup-page');
+                    document.body.style.height = 'auto';
+                }
             },
             {
                 route: '/income',
@@ -141,7 +159,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/income-expenses/edit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new IncomeExpensesNew(this.openNewRoute.bind(this));
+                    new IncomeExpensesEdit(this.openNewRoute.bind(this));
                 },
                 styles: ['bootstrap-datepicker.css' ],
                 scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
@@ -155,7 +173,7 @@ export class Router {
     initEvents() {
         window.addEventListener('DOMContentLoaded', this.activateRoute.bind(this));
         window.addEventListener('popstate', this.activateRoute.bind(this));
-        // document.addEventListener('click', this.clickHandler.bind(this));
+        document.addEventListener('click', this.clickHandler.bind(this));
     }
 
     async openNewRoute(url) {
@@ -165,7 +183,46 @@ export class Router {
 
     }
 
+    async clickHandler(e) {
+
+        let element = null;
+        if (e.target.nodeName === 'A') {
+            element = e.target;
+        } else if (e.target.parentNode.nodeName === 'A') {
+            element = e.target.parentNode;
+        }
+        if (element) {
+            e.preventDefault();
+
+            const currentRoute = window.location.pathname;
+            const url = element.href.replace(window.location.origin, '');
+            if (!url || (currentRoute === url.replace('#', '')) || url.startsWith('javascript:void(0)')) {
+                return;
+            }
+
+            await this.openNewRoute(url);
+        }
+    }
+
     async activateRoute(e, oldRoute = null) {
+        if (oldRoute) {
+            const currentRoute = this.routes.find(item => item.route === oldRoute);
+            if (currentRoute.styles && currentRoute.styles.length > 0) {
+                currentRoute.styles.forEach(style => {
+                    document.querySelector(`link[href='/css/${style}']`).remove();
+                })
+            }
+            if (currentRoute.scripts && currentRoute.scripts.length > 0) {
+                currentRoute.scripts.forEach(script => {
+                    document.querySelector(`script[src='/js/${script}']`).remove();
+                })
+            }
+            // console.log(currentRoute);
+            if (currentRoute.unload && typeof currentRoute.unload === 'function') {
+                currentRoute.unload();
+            }
+        }
+
 
         const urlRoute = window.location.pathname;
         const newRoute = this.routes.find(item => item.route === urlRoute);

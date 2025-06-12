@@ -83,7 +83,7 @@ export class IncomeExpensesList {
             trElement.insertCell().innerText = incomeExpenses[i].date;
             trElement.insertCell().innerText = incomeExpenses[i].comment;
 
-            trElement.insertCell().innerHTML = CommonUtils.generateGridToolsColumn('incomeExpenses', incomeExpenses[i].id)
+            trElement.insertCell().innerHTML = CommonUtils.generateGridToolsColumn('income-expenses', incomeExpenses[i].id)
 
             recordsElement.appendChild(trElement);
         }

@@ -55,6 +55,7 @@ module.exports = {
                 { from: "./.env", to: "./" },
                 { from: "./node_modules/bootstrap/dist/css/bootstrap.min.css", to: "./css" },
                 { from: "./node_modules/bootstrap/dist/js/bootstrap.min.js", to: "./js" },
+                { from: "./node_modules/icheck-bootstrap/icheck-bootstrap.min.css", to: "./css" },
                 { from: "./node_modules/jquery/dist/jquery.min.js", to: "./js" },
                 { from: "./node_modules/chart.js/dist/chart.umd.js", to: "./js" },
                 { from: "./node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.js", to: "./js" },
