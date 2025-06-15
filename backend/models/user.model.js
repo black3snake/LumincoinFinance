@@ -2,6 +2,11 @@ const TAFFY = require('taffy');
 const users = TAFFY(require('../data/users-initial.json'));
 
 class UserModel {
+    // bl
+    static findAll(userId) {
+        return users().get();
+    }
+    //--
     static findOne(params) {
         return users(params).first();
     }

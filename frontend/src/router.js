@@ -11,6 +11,8 @@ import {IncomeExpensesNew} from "./components/income-expenses/income-expenses-ne
 import {IncomeExpensesEdit} from "./components/income-expenses/income-expenses-edit";
 import {Login} from "./components/auth/login";
 import {SignUp} from "./components/auth/sign-up";
+import {AuthUtils} from "./utils/auth-utils";
+import {Logout} from "./components/auth/logout";
 
 export class Router {
     constructor() {
@@ -25,7 +27,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/main.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Main();
+                    new Main(this.openNewRoute.bind(this));
                 },
                 styles: ['bootstrap-datepicker.css'],
                 scripts: ['chart.umd.js', 'bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
@@ -51,6 +53,13 @@ export class Router {
                     document.body.style.height = 'auto';
                 },
                 styles: ['icheck-bootstrap.min.css']
+            },
+            {
+                route: '/logout',
+                load: () => {
+                    new Logout(this.openNewRoute.bind(this));
+                }
+
             },
             {
                 route: '/sign-up',
@@ -139,7 +148,7 @@ export class Router {
                 load: () => {
                     new IncomeExpensesList(this.openNewRoute.bind(this));
                 },
-                styles: ['bootstrap-datepicker.css', 'all.min.css'],
+                styles: ['bootstrap-datepicker.css'],
                 scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
             },
             {
@@ -150,7 +159,7 @@ export class Router {
                 load: () => {
                     new IncomeExpensesNew(this.openNewRoute.bind(this));
                 },
-                styles: ['bootstrap-datepicker.css' ],
+                styles: ['bootstrap-datepicker.css'],
                 scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
             },
             {
@@ -161,7 +170,7 @@ export class Router {
                 load: () => {
                     new IncomeExpensesEdit(this.openNewRoute.bind(this));
                 },
-                styles: ['bootstrap-datepicker.css' ],
+                styles: ['bootstrap-datepicker.css'],
                 scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
             },
 
@@ -255,15 +264,15 @@ export class Router {
                     // document.body.classList.add('layout-fixed');
 
                     this.profileNameElement = document.getElementById('profile-name');
-                    // if (!this.userName) {
-                    //     const userInfo = AuthUtils.getAuthInfo(AuthUtils.userinfoTokenKey) ? JSON.parse(AuthUtils.getAuthInfo(AuthUtils.userinfoTokenKey)) : '';
-                    //     if (userInfo && userInfo.name) {
-                    //         this.userName = userInfo.name;
-                    //     }
-                    // }
-                    // this.profileNameElement.innerText = this.userName;
+                    if (!this.userName) {
+                        const userInfo = AuthUtils.getAuthInfo(AuthUtils.userinfoTokenKey) ? JSON.parse(AuthUtils.getAuthInfo(AuthUtils.userinfoTokenKey)) : '';
+                        if (userInfo && userInfo.name) {
+                            this.userName = userInfo.name;
+                        }
+                    }
+                    this.profileNameElement.innerText = this.userName;
 
-                    // this.activateMenuItem(newRoute);
+                    this.activateMenuItem(newRoute);
                 } else {
                     document.body.classList.remove('sidebar-mini');
                     document.body.classList.remove('layout-fixed');
@@ -283,7 +292,27 @@ export class Router {
             history.pushState(null, '', '/404');
             await this.activateRoute(null);
         }
-
-
     }
+
+    activateMenuItem(route) {
+        const menuCategoryElement = document.getElementById('menu_category');
+
+        document.querySelectorAll('.sidebar .nav-link').forEach(item => {
+            const href = item.getAttribute('href');
+            if ((route.route.includes(href) && href !== '/') || (route.route === '/' && href === '/')) {
+                if ((route.route.includes(href) && href !== '/income') || (route.route === '/income' && href === '/income')) {
+                    item.classList.add('active');
+                    if (['/income', '/expenses'].includes(href)) {
+                        menuCategoryElement.classList.remove('collapsed')
+                        menuCategoryElement.setAttribute('aria-expanded', true);
+                        let showMenu = menuCategoryElement.nextElementSibling;
+                        showMenu.classList.add('show');
+                    }
+                }
+            } else {
+                item.classList.remove('active');
+            }
+        })
+    }
+
 }

@@ -1,5 +1,5 @@
 <div class="d-flex layout">
-    <aside class="d-flex flex-column flex-shrink-0 bg-light min-vh-100" style="width: 220px;">
+    <aside class="sidebar d-flex flex-column flex-shrink-0 bg-light min-vh-100" style="width: 220px;">
         <a href="/"
            class="d-flex flex-column  text-decoration-none logoLF">
             <!--            mb-3 mb-md-0 me-md-auto link-dark  align-items-center-->
@@ -15,30 +15,30 @@
                              xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                   d="M1.5 12.3964V5.89641H2.5V12.3964C2.5 12.6726 2.72386 12.8964 3 12.8964H12C12.2761 12.8964 12.5 12.6726 12.5 12.3964V5.89641H13.5V12.3964C13.5 13.2248 12.8284 13.8964 12 13.8964H3C2.17157 13.8964 1.5 13.2248 1.5 12.3964Z"
-                                  />
+                            />
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                   d="M12.5 1.39641V4.89641L10.5 2.89641V1.39641C10.5 1.12027 10.7239 0.896409 11 0.896409H12C12.2761 0.896409 12.5 1.12027 12.5 1.39641Z"
-                                  />
+                            />
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                   d="M6.79289 0.396409C7.18342 0.00588346 7.81658 0.00588554 8.20711 0.396409L14.8536 7.04286C15.0488 7.23812 15.0488 7.5547 14.8536 7.74996C14.6583 7.94522 14.3417 7.94522 14.1464 7.74996L7.5 1.10352L0.853553 7.74996C0.658291 7.94522 0.341709 7.94522 0.146447 7.74996C-0.0488155 7.5547 -0.0488155 7.23812 0.146447 7.04286L6.79289 0.396409Z"
-                                  />
+                            />
                         </svg>
                         Главная
                     </a>
                 </li>
                 <li>
-                    <a href="/income-expenses" class="nav-link ">
+                    <a href="/income-expenses" class="nav-link">
                         <svg class="bi pe-none me-1 align-text-bottom" width="16" height="20" viewBox="0 0 16 16"
                              xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                   d="M11 15C13.2091 15 15 13.2091 15 11C15 8.79086 13.2091 7 11 7C8.79086 7 7 8.79086 7 11C7 13.2091 8.79086 15 11 15ZM16 11C16 13.7614 13.7614 16 11 16C8.23858 16 6 13.7614 6 11C6 8.23858 8.23858 6 11 6C13.7614 6 16 8.23858 16 11Z"
-                                  />
+                            />
                             <path d="M9.4375 11.9444C9.48519 12.5403 9.95568 13.0049 10.8013 13.0599V13.5H11.1764V13.0568C12.0507 12.9957 12.5625 12.5281 12.5625 11.8496C12.5625 11.2323 12.1715 10.9144 11.4721 10.7494L11.1764 10.6791V9.48105C11.5516 9.52384 11.79 9.72861 11.8472 10.0128H12.5053C12.4576 9.43826 11.9648 8.989 11.1764 8.9401V8.5H10.8013V8.94927C10.0542 9.02262 9.54559 9.47188 9.54559 10.1076C9.54559 10.6699 9.92389 11.0275 10.5533 11.1742L10.8013 11.2353V12.5067C10.4166 12.4487 10.1623 12.2378 10.1051 11.9444H9.4375ZM10.7981 10.5905C10.4294 10.5049 10.2291 10.3307 10.2291 10.0678C10.2291 9.77445 10.4453 9.5544 10.8013 9.49022V10.5905H10.7981ZM11.2305 11.3362C11.6787 11.4401 11.8854 11.6082 11.8854 11.9046C11.8854 12.2439 11.6279 12.4762 11.1764 12.5189V11.324L11.2305 11.3362Z"
-                                  />
+                            />
                             <path d="M1 0C0.447715 0 0 0.447716 0 1V9C0 9.55229 0.447715 10 1 10H5.08296C5.1407 9.65585 5.22773 9.32163 5.34141 9H3C3 7.89543 2.10457 7 1 7V3C2.10457 3 3 2.10457 3 1H13C13 2.10457 13.8954 3 15 3V6.52779C15.3801 6.86799 15.7166 7.25594 16 7.68221V1C16 0.447715 15.5523 0 15 0H1Z"
-                                  />
+                            />
                             <path d="M9.9983 5.08325C9.99943 5.05564 10 5.02789 10 5C10 3.89543 9.10457 3 8 3C6.89543 3 6 3.89543 6 5C6 5.6845 6.34387 6.28869 6.86829 6.64924C7.71486 5.84504 8.79591 5.28533 9.9983 5.08325Z"
-                                  />
+                            />
                         </svg>
                         Доходы & Расходы
                     </a>
@@ -46,31 +46,39 @@
             </ul>
             <ul class="nav nav-pills ps-0 mb-auto">
                 <li class="mb-1 flex-grow-1">
-                    <button class="btn btn-toggle d-inline-flex align-items-center collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#home-collapse" aria-expanded="false">
+                    <a class="btn btn-toggle d-inline-flex align-items-center collapsed" data-bs-toggle="collapse"
+                            data-bs-target="#home-collapse" aria-expanded="false" id="menu_category">
                         Категории
-                    </button>
+                    </a>
                     <div class="collapse" id="home-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled">
                             <li>
-                                <a href="/income" class="d-block text-decoration-none">Доходы</a>
+                                <a href="/income" class="nav-link d-block text-decoration-none"
+                                   data-bs-auto-close="false">Доходы</a>
                             </li>
                             <li>
-                                <a href="/expenses" class="d-block text-decoration-none">Расходы</a>
+                                <a href="/expenses" class="nav-link d-block text-decoration-none"
+                                   data-bs-auto-close="false">Расходы</a>
                             </li>
                         </ul>
                     </div>
                 </li>
             </ul>
         </div>
-            <div class="balans">Баланс:
-                <span>500$</span>
-            </div>
+        <div class="balans">Баланс:
+            <span>500$</span>
+        </div>
         <hr>
-        <div class="user-layout">
+        <div class="user-layout d-flex justify-content-between align-items-center">
             <a href="javascript:void(0)" class="d-flex align-items-center text-decoration-none">
                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                <span>Maxo Polo</span>
+                <span id="profile-name">Пользователь</span>
+            </a>
+            <a href="/logout" id="logout" class="user-layout-logout">
+                <svg height="20" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8"
+                          stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                </svg>
             </a>
         </div>
     </aside>

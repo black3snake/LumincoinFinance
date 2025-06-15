@@ -1,4 +1,6 @@
 import {ValidationUtils} from "../../utils/validation-utils";
+import {AuthUtils} from "../../utils/auth-utils";
+import {AuthService} from "../../services/auth-service";
 
 export class SignUp {
     constructor(openNewRoute) {
@@ -49,20 +51,28 @@ export class SignUp {
 
         if (ValidationUtils.validationForm(this.validations)) {
             // request
-            // const signUpResult = await AuthService.signUp({
-            //     name: this.nameElement.value,
-            //     lastName: this.lastNameElement.value,
-            //     email: this.emailElement.value,
-            //     password: this.passwordElement.value
-            // })
-            //
-            // if (signUpResult) {
-            //     AuthUtils.setAuthInfo(signUpResult.accessToken, signUpResult.refreshToken, {
-            //         id: signUpResult.id,
-            //         name: signUpResult.name,
-            //     });
-            //     return this.openNewRoute('/');
-            // }
+            const signUpResult = await AuthService.signUp({
+                name: this.nameElement.value,
+                lastName: this.lastNameElement.value,
+                email: this.emailElement.value,
+                password: this.passwordElement.value,
+                passwordRepeat: this.passwordRepeatElement.value
+            })
+
+            if (signUpResult) {
+                const loginResult = await AuthService.logIn({
+                    email: signUpResult.user.email,
+                    password: signUpResult.user.password,
+                    rememberMe: false
+                });
+                if (loginResult) {
+                    AuthUtils.setAuthInfo(loginResult.tokens.accessToken, loginResult.tokens.refreshToken, {
+                        id: loginResult.user.id,
+                        name: loginResult.user.name + ' ' + loginResult.user.lastName,
+                    });
+                    return this.openNewRoute('/');
+                }
+            }
 
             this.commonErrorElement.style.display = 'block';
 

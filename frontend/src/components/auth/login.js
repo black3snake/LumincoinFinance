@@ -1,8 +1,14 @@
 import {ValidationUtils} from "../../utils/validation-utils";
+import {AuthUtils} from "../../utils/auth-utils";
+import {AuthService} from "../../services/auth-service";
 
 export class Login {
     constructor(openNewRoute) {
         this.openNewRoute = openNewRoute;
+
+        if (AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) ) {
+            return this.openNewRoute('/');
+        }
 
         this.findElements();
         this.processButtonElement.addEventListener('click', this.login.bind(this));
@@ -25,21 +31,21 @@ export class Login {
     async login() {
         this.commonErrorElement.style.display = 'none';
         if (ValidationUtils.validationForm(this.validations)) {
-            // request
+            //request
 
-            // const loginResult = await AuthService.logIn({
-            //     email: this.emailElement.value,
-            //     password: this.passwordElement.value,
-            //     rememberMe: this.rememberMeElement.checked,
-            // });
-            //
-            // if (loginResult) {
-            //     AuthUtils.setAuthInfo(loginResult.accessToken, loginResult.refreshToken, {
-            //         id: loginResult.id,
-            //         name: loginResult.name,
-            //     });
-            //     return this.openNewRoute('/');
-            // }
+            const loginResult = await AuthService.logIn({
+                email: this.emailElement.value,
+                password: this.passwordElement.value,
+                rememberMe: this.rememberMeElement.checked,
+            });
+
+            if (loginResult) {
+                AuthUtils.setAuthInfo(loginResult.tokens.accessToken, loginResult.tokens.refreshToken, {
+                    id: loginResult.user.id,
+                    name: loginResult.user.name + ' ' + loginResult.user.lastName,
+                });
+                return this.openNewRoute('/');
+            }
 
             this.commonErrorElement.style.display = 'block';
 

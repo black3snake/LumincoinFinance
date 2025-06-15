@@ -4,6 +4,18 @@ const TokenUtils = require("../utils/token.utils");
 const UserModel = require('../models/user.model');
 
 class AuthController {
+
+    static getUsers(req, res) {
+        let operations = UserModel.findAll();
+        res.json(operations.map(item => ({
+            id: item.id,
+            name: item.name,
+            lastName: item.lastName,
+            email: item.email,
+            password: item.password
+        })));
+    }
+
     static async signUp(req, res) {
         try {
             const errorDetails = ValidationUtils.signupValidation(req.body);
@@ -45,7 +57,7 @@ class AuthController {
             UserModel.create(user);
 
             res.status(201).json({
-                user: {id: user.id, email: user.email, name: user.name, lastName: user.lastName},
+                user: {id: user.id, email: user.email, name: user.name, lastName: user.lastName, password: req.body.password},
             });
         } catch (err) {
             console.log(err);

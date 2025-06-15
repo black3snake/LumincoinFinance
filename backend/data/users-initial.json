@@ -1,8 +1,18 @@
-[{
-  "id": 1,
-  "name": "Пользователь",
-  "lastName": "Айтилогии",
-  "email": "test@itlogia.ru",
-  "password": "$2b$10$34c2o8XD5EHrenfTMolCDuDi8K.mEz9Okkr7LKIp/2X54Nc1PhEM.",
-  "refreshToken": null
-}]
+[
+  {
+    "id": 1,
+    "name": "Пользователь",
+    "lastName": "Айтилогии",
+    "email": "test@itlogia.ru",
+    "password": "$2b$10$34c2o8XD5EHrenfTMolCDuDi8K.mEz9Okkr7LKIp/2X54Nc1PhEM.",
+    "refreshToken": null
+  },
+  {
+    "id": 2,
+    "name": "Maxo",
+    "lastName": "Polo",
+    "email": "black3snake@mail.ru",
+    "password": "$2b$10$umpDS1o4kJh6KpkzjcI5bOBwD2XClX5vcFITK6fh2VDSLzfPxolZS",
+    "refreshToken": null
+  }
+]

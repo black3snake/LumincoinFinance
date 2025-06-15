@@ -3,7 +3,8 @@ const categories = TAFFY(require('../data/categories-expense-initial.json'));
 
 class CategoryExpenseModel {
     static findAll(userId) {
-        return categories({user_id: userId}).get();
+        return categories().get();
+        // return categories({user_id: userId}).get();
     }
 
     static findOne(params) {

@@ -1,7 +1,9 @@
 import {Chart, PieController, ArcElement, Tooltip, Legend, Title} from "chart.js";
+import {AuthUtils} from "../utils/auth-utils";
 
 export class Main {
-    constructor() {
+    constructor(openNewRoute) {
+        this.openNewRoute = openNewRoute;
 
         this.ctxLeft = document.getElementById('myPieChart-left').getContext('2d');
         this.ctxRight = document.getElementById('myPieChart-right').getContext('2d');
