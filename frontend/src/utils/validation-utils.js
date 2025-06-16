@@ -11,7 +11,7 @@ export class ValidationUtils {
         return isValid;
     }
 
-    static validateFields(element, options, elementAppend) {
+    static validateFields(element, options, elementAppend=null) {
         let condition = element.value;
         if (options) {
             if (options.hasOwnProperty('pattern')) {
@@ -28,12 +28,16 @@ export class ValidationUtils {
 
         if (condition) {
             element.classList.remove('is-invalid');
-            elementAppend.style.borderColor = '#dee2e6';
+            if (elementAppend) {
+                elementAppend.style.borderColor = '#dee2e6';
+            }
             return true;
         } else {
             element.classList.add('is-invalid');
-            element.style.borderLeft = '1px solid #dee2e6';
-            elementAppend.style.border = '1px solid red';
+            if (elementAppend) {
+                element.style.borderLeft = '1px solid #dee2e6';
+                elementAppend.style.border = '1px solid red';
+            }
             return false;
         }
 

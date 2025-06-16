@@ -3,8 +3,8 @@ const categories = TAFFY(require('../data/categories-income-initial.json'));
 
 class CategoryIncomeModel {
     static findAll(userId) {
-        return categories().get();
-        // return categories({user_id: userId}).get();
+        // return categories().get();
+        return categories({user_id: userId}).get();
     }
 
     static findOne(params) {

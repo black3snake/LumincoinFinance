@@ -32,8 +32,8 @@ class OperationModel {
         }
 
         // do filter
-        const operationModels = operations().get();
-        // const operationModels = operations({user_id: userId}).get();
+        // const operationModels = operations().get();
+        const operationModels = operations({user_id: userId}).get();
 
         const filteredOperations = dateFilterTo && dateFilterFrom ? operationModels.filter(operationModel => {
             const operationDate = moment(operationModel.date);

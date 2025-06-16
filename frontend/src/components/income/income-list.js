@@ -1,4 +1,5 @@
 import {CommonUtils} from "../../utils/common-utils";
+import {IncomeService} from "../../services/income-service";
 
 export class IncomeList {
     constructor(openNewRoute) {
@@ -16,7 +17,7 @@ export class IncomeList {
         })
 
 
-        this.getIncomesList();
+        this.getIncomesList().then();
 
         document.querySelectorAll('.card_action .btn-danger').forEach(action => {
             action.addEventListener('click', () => {
@@ -26,10 +27,18 @@ export class IncomeList {
 
     }
 
-    getIncomesList() {
-        const array = ['Депозиты', 'Зарплата', 'Сбережения', 'Инвестиции']
+    async getIncomesList() {
+        // const array = ['Депозиты', 'Зарплата', 'Сбережения', 'Инвестиции'];
+        const response = await IncomeService.getIncomes();
 
-        return this.showRecords(array);
+        if (response.error) {
+            alert(response.error);
+            return response.redirect ? this.openNewRoute(response.redirect) : null;
+        }
+
+
+
+        return this.showRecords(response.incomes);
     }
 
     showRecords(incomes) {
@@ -45,19 +54,20 @@ export class IncomeList {
 
             const cardTitleElement = document.createElement("div");
             cardTitleElement.classList.add('card_title');
-            cardTitleElement.innerText = incomes[i];
+            cardTitleElement.innerText = incomes[i].title;
 
             const cardActionElement = document.createElement("div");
             cardActionElement.classList.add('card_action','d-flex');
             const buttonEditElement = document.createElement("a");
             buttonEditElement.classList.add('btn', 'btn-primary');
             buttonEditElement.innerText = "Редактировать";
-            buttonEditElement.setAttribute('href', '/income/edit');  // TODO будет формироваться через id
+            buttonEditElement.setAttribute('href', '/income/edit?id=' + incomes[i].id);  // TODO будет формироваться через id
 
 
             const buttonDeleteElement = document.createElement("a");
             buttonDeleteElement.classList.add('btn', 'btn-danger');
             buttonDeleteElement.innerText = 'Удалить';
+            buttonDeleteElement.setAttribute('href', '/income/delete?id=' + incomes[i].id);
 
             cardActionElement.appendChild(buttonEditElement);
             cardActionElement.appendChild(buttonDeleteElement);

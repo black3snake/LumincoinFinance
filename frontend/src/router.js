@@ -13,6 +13,7 @@ import {Login} from "./components/auth/login";
 import {SignUp} from "./components/auth/sign-up";
 import {AuthUtils} from "./utils/auth-utils";
 import {Logout} from "./components/auth/logout";
+import {IncomeDelete} from "./components/income/income-delete";
 
 export class Router {
     constructor() {
@@ -84,8 +85,6 @@ export class Router {
                 load: () => {
                     new IncomeList(this.openNewRoute.bind(this));
                 },
-                // styles: [''],
-                // scripts: ['']
             },
             {
                 route: '/income/create',
@@ -95,8 +94,6 @@ export class Router {
                 load: () => {
                     new IncomeCreate(this.openNewRoute.bind(this));
                 },
-                // styles: [''],
-                // scripts: ['']
             },
             {
                 route: '/income/edit',
@@ -106,8 +103,12 @@ export class Router {
                 load: () => {
                     new IncomeEdit(this.openNewRoute.bind(this));
                 },
-                // styles: [''],
-                // scripts: ['']
+            },
+            {
+                route: '/income/delete',
+                load: () => {
+                    new IncomeDelete(this.openNewRoute.bind(this));
+                }
             },
             {
                 route: '/expenses',

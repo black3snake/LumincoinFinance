@@ -285,15 +285,18 @@ body {
 
             .incomeCreate_input {
                 width: 397px;
-                margin-bottom: 20px;
 
                 &::placeholder {
                     color: #6C757D;
+                }
+                &:focus {
+                    box-shadow: none;
                 }
             }
 
             .incomeCreate_action {
                 gap: 10.5px;
+                margin-top: 20px;
 
             }
         }
@@ -313,15 +316,18 @@ body {
 
             .incomeEdit_input {
                 width: 397px;
-                margin-bottom: 20px;
 
                 &::placeholder {
                     color: #6C757D;
+                }
+                &:focus {
+                    box-shadow: none;
                 }
             }
 
             .incomeEdit_action {
                 gap: 10.5px;
+                margin-top: 20px;
 
             }
         }

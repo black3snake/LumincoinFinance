@@ -1,5 +1,5 @@
-import config from "../config/config.js";
 import {AuthUtils} from "./auth-utils.js";
+import config from "../config/config";
 
 export class HttpUtils {
     static async request(url, method = "GET", useAuth = true, body = null) {
@@ -20,7 +20,7 @@ export class HttpUtils {
         if (useAuth) {
             token = AuthUtils.getAuthInfo(AuthUtils.accessTokenKey);
             if (token) {
-                params.headers['authorization'] = token;
+                params.headers['x-auth-token'] = token;
                 // params.headers.authorization = token; // можно так
             }
         }
