@@ -12,14 +12,22 @@
             margin-bottom: 40px;
             line-height: 40px;
         }
+
         .income-expenses-action {
             margin-bottom: 40px;
             gap: 10.5px;
             font-size: 14px;
         }
+
         .income-expenses_switch {
             flex-wrap: wrap;
             margin-bottom: 40px;
+
+            label.btn {
+                border-radius: 6px;
+                width: 100px;
+                flex: unset;
+            }
 
             button {
                 width: 100px;
@@ -50,34 +58,59 @@
             width: 100%;
             height: 100%;
 
-            .dt-container {
-                table {
-                    th {
-                        border: none;
 
-                        .dt-column-title {
-                            font-size: 16px;
-                            font-family: Roboto, sans-serif;
-                        }
+            .table {
+                th {
+                    border: none;
+                    font-weight: normal;
 
-                        .dt-column-order {
-                            display: none;
-                        }
-                    }
-                    td {
-                        border: none;
+                    .dt-column-title {
+                        font-size: 16px;
                         font-family: Roboto, sans-serif;
-                        font-weight: 400;
                     }
-                    .income-expense-tools {
-                        display: flex;
-                        flex-wrap: nowrap;
-                        gap: 0.5rem;
-                        .trash {
-                            text-decoration: none;
-                            margin-right: 2px;
-                        }
+
+                    .dt-column-order {
+                        display: none;
                     }
+                }
+
+                td {
+                    border: none;
+                    font-family: Roboto, sans-serif;
+                    font-weight: 400;
+                }
+
+                .income-expense-tools {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    gap: 0.5rem;
+
+                    .trash {
+                        text-decoration: none;
+                        margin-right: 2px;
+                    }
+                }
+            }
+            .dataTables_paginate {
+                display: flex;
+                justify-content: flex-end;
+                font-family: Roboto, sans-serif;
+                font-size: 14px;
+                a {
+                    text-decoration: none;
+                    color: #7e858b;
+                }
+                span>a {
+                    color: black;
+                    font-weight: bold;
+                }
+                a:first-child {
+                    margin-right: 10px;
+                    cursor: pointer;
+                }
+                a:last-child {
+                    margin-left: 10px;
+                    cursor: pointer;
                 }
             }
         }
@@ -92,13 +125,16 @@
             font-size: 40px;
             margin-bottom: 40px;
         }
+
         .income-expenses-new_content {
             font-family: Roboto, sans-serif;
+
             .form-control {
                 outline: none;
                 appearance: none;
                 color: #333;
                 cursor: pointer;
+
                 &:focus {
                     box-shadow: none;
                 }
@@ -116,13 +152,16 @@
             font-size: 40px;
             margin-bottom: 40px;
         }
+
         .income-expenses-edit_content {
             font-family: Roboto, sans-serif;
+
             .form-control {
                 outline: none;
                 appearance: none;
                 color: #333;
                 cursor: pointer;
+
                 &:focus {
                     box-shadow: none;
                 }

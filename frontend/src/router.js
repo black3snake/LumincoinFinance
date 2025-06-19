@@ -14,6 +14,7 @@ import {SignUp} from "./components/auth/sign-up";
 import {AuthUtils} from "./utils/auth-utils";
 import {Logout} from "./components/auth/logout";
 import {IncomeDelete} from "./components/income/income-delete";
+import {ExpensesDelete} from "./components/expenses/expenses-delete";
 
 export class Router {
     constructor() {
@@ -117,9 +118,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new ExpensesList(this.openNewRoute.bind(this));
-                },
-                // styles: [''],
-                // scripts: ['']
+                }
             },
             {
                 route: '/expenses/create',
@@ -128,7 +127,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new ExpensesCreate(this.openNewRoute.bind(this));
-                },
+                }
             },
             {
                 route: '/expenses/edit',
@@ -137,9 +136,13 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new ExpensesEdit(this.openNewRoute.bind(this));
-                },
-                // styles: [''],
-                // scripts: ['']
+                }
+            },
+            {
+                route: '/expenses/delete',
+                load: () => {
+                    new ExpensesDelete(this.openNewRoute.bind(this));
+                }
             },
             {
                 route: '/income-expenses',
@@ -150,7 +153,7 @@ export class Router {
                     new IncomeExpensesList(this.openNewRoute.bind(this));
                 },
                 styles: ['bootstrap-datepicker.css'],
-                scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
+                scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js', 'jquery.dataTables.min.js']
             },
             {
                 route: '/income-expenses/new',

@@ -18,7 +18,8 @@
     "datatables.net-dt": "^2.3.2",
     "dotenv-webpack": "^8.1.0",
     "icheck-bootstrap": "^3.0.1",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "moment": "^2.30.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^13.0.0",
