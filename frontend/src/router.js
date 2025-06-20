@@ -15,6 +15,7 @@ import {AuthUtils} from "./utils/auth-utils";
 import {Logout} from "./components/auth/logout";
 import {IncomeDelete} from "./components/income/income-delete";
 import {ExpensesDelete} from "./components/expenses/expenses-delete";
+import {IncomeExpensesDelete} from "./components/income-expenses/income-expenses-delete";
 
 export class Router {
     constructor() {
@@ -177,6 +178,12 @@ export class Router {
                 styles: ['bootstrap-datepicker.css'],
                 scripts: ['bootstrap-datepicker.js', 'bootstrap-datepicker.ru.min.js']
             },
+            {
+                route: '/income-expenses/delete',
+                load: () => {
+                    new IncomeExpensesDelete(this.openNewRoute.bind(this));
+                }
+            },
 
         ];
 
@@ -209,7 +216,7 @@ export class Router {
 
             const currentRoute = window.location.pathname;
             const url = element.href.replace(window.location.origin, '');
-            if (!url || (currentRoute === url.replace('#', '')) || url.startsWith('javascript:void(0)')) {
+            if (!url || (currentRoute === url.replace('#', '')) || url.startsWith('javascript:void(0)') || url.includes('income-expenses/delete')) {
                 return;
             }
 

@@ -108,7 +108,6 @@ export class IncomeExpensesNew {
         }
     }
 
-
     async saveOperation(e) {
         e.preventDefault();
 
@@ -121,7 +120,7 @@ export class IncomeExpensesNew {
                 category_id: parseInt(this.categorySelectElement.value)
             };
 
-            const response = await OperationsService.createIncome(createData);
+            const response = await OperationsService.createOperation(createData);
 
             if (response.error) {
                 alert(response.error);

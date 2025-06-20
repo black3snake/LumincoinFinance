@@ -49,4 +49,11 @@ export class CreateEl {
         this.cardElement.appendChild(this.cardBodyElement);
         return this.cardElement;
     }
+
+    static operationCreateOption(path) {
+
+
+    }
+
+
 }
