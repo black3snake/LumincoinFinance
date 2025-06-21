@@ -9,6 +9,7 @@
 @mixin containerBody {
     margin-top: 80px;
     padding-left: 61px;
+    margin-left: unset;
 }
 
 * {
@@ -75,6 +76,13 @@ body {
 
         .main_switch {
             flex-wrap: wrap;
+            //margin-bottom: 40px;
+
+            label.btn {
+                border-radius: 6px;
+                width: 100px;
+                flex: unset;
+            }
 
             button {
                 width: 100px;

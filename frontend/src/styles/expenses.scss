@@ -1,6 +1,7 @@
 @mixin containerBody {
     margin-top: 80px;
     padding-left: 61px;
+    margin-left: unset;
 }
 
 .expensesList {
