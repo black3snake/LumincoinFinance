@@ -24,7 +24,8 @@ export class ExpensesCreate {
             const response = await ExpensesService.createExpense(createData);
 
             if (response.error) {
-                alert(response.error);
+                // alert(response.error);
+                console.log(response.error);
                 return response.redirect ? this.openNewRoute(response.redirect) : null;
             }
 

@@ -36,7 +36,8 @@ export class ExpensesList {
         const response = await ExpensesService.getExpenses();
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
         return this.showRecords(response.expenses);

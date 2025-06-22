@@ -113,7 +113,8 @@ export class IncomeExpensesList {
         const response = await OperationsService.getOperations(filter);
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 

@@ -16,6 +16,7 @@ import {Logout} from "./components/auth/logout";
 import {IncomeDelete} from "./components/income/income-delete";
 import {ExpensesDelete} from "./components/expenses/expenses-delete";
 import {IncomeExpensesDelete} from "./components/income-expenses/income-expenses-delete";
+import {BalanceService} from "./services/balance-service";
 
 export class Router {
     constructor() {
@@ -274,6 +275,10 @@ export class Router {
                     // document.body.classList.add('sidebar-mini');
                     // document.body.classList.add('layout-fixed');
 
+                    this.balanceElement = document.getElementById('balance');
+                    const userBalance = await BalanceService.getBalance();
+                    this.balanceElement.innerText = userBalance.balance + '$';
+
                     this.profileNameElement = document.getElementById('profile-name');
                     if (!this.userName) {
                         const userInfo = AuthUtils.getAuthInfo(AuthUtils.userinfoTokenKey) ? JSON.parse(AuthUtils.getAuthInfo(AuthUtils.userinfoTokenKey)) : '';
@@ -282,6 +287,7 @@ export class Router {
                         }
                     }
                     this.profileNameElement.innerText = this.userName;
+                    this.dropdown();
 
                     this.activateMenuItem(newRoute);
                 } else {
@@ -324,6 +330,25 @@ export class Router {
                 item.classList.remove('active');
             }
         })
+    }
+
+    dropdown() {
+        let hideTimeout;
+        const dropdownElement = document.getElementById('dropdown');
+        const menu = dropdownElement.querySelector('.dropdown-menu');
+        dropdownElement.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            menu.classList.add('show');
+        });
+
+        dropdownElement.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                menu.classList.remove('show');
+            },1000)
+        });
+
+
+
     }
 
 }

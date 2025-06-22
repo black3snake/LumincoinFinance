@@ -1,5 +1,4 @@
 import {Chart, PieController, ArcElement, Tooltip, Legend, Title} from "chart.js";
-import {AuthUtils} from "../utils/auth-utils";
 import moment from "moment/moment";
 import {IncomeService} from "../services/income-service";
 import {ExpensesService} from "../services/expenses-service";
@@ -24,7 +23,7 @@ export class Main {
                     if (!item.nextElementSibling.innerText.includes('Интервал')) {
                         than.startDateElement.val('');
                         than.endDateElement.val('');
-                        // than.getIncomeExpensesList(than.funcFilter(item.nextElementSibling.innerText)).then();
+                        than.getOperations(than.funcFilter(item.nextElementSibling.innerText)).then();
                     }
                 }
             })
@@ -52,7 +51,7 @@ export class Main {
                 if (this.startDate && this.endDate) {
                     this.periodDate.dateFrom = moment(this.startDate).format('YYYY-MM-DD');
                     this.periodDate.dateTo = moment(this.endDate).format('YYYY-MM-DD');
-                    // this.getIncomeExpensesList(this.funcFilter('Интервал')).then();
+                    this.getOperations(this.funcFilter('Интервал')).then();
                 }
             } else {
                 this.startDateElement.val('');
@@ -67,7 +66,7 @@ export class Main {
                 if (this.startDate && this.endDate) {
                     this.periodDate.dateFrom = moment(this.startDate).format('YYYY-MM-DD');
                     this.periodDate.dateTo = moment(this.endDate).format('YYYY-MM-DD');
-                    // this.getIncomeExpensesList(this.funcFilter('Интервал')).then();
+                    this.getOperations(this.funcFilter('Интервал')).then();
                 }
             } else {
                 this.endDateElement.val('');
@@ -76,11 +75,10 @@ export class Main {
 
         // data for Chart
         this.dataForChart = {
-            incomesTitle: null,
+            incomesTitle: [],
             incomesData: [],
-            expensesTitle: null,
+            expensesTitle: [],
             expensesData: [],
-            colors: ['Красный', 'Зеленый', 'Синий', 'Черный', 'Белый', 'Серый', 'Оранжевый', 'Желтый', 'Розовый', 'Коричневый', 'Фиолетовый', 'Пурпурный'],
             color_rgb: [
                 'rgb(249,1,1)',
                 'rgb(9,170,74)',
@@ -101,99 +99,25 @@ export class Main {
 
         this.init().then();
 
-
-        // const DATA_COUNT = 5;
-        // const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
-
-        // const data = {
-        //     labels: ['Красный', 'Синий', 'Желтый', 'Зеленый', 'Фиолетовый'],
-        //     datasets: [{
-        //         data: [12, 19, 3, 5, 2],
-        //         backgroundColor: [
-        //             'rgba(255, 99, 132, 0.8)',
-        //             'rgba(54, 162, 235, 0.8)',
-        //             'rgba(255, 206, 86, 0.8)',
-        //             'rgba(75, 192, 192, 0.8)',
-        //             'rgba(153, 102, 255, 0.8)'
-        //         ],
-        //         borderWidth: 1
-        //     }],
-        // };
-        // const title = {
-        //     display: true,
-        //     color: '#290661',
-        //     font: {
-        //         family: "'Roboto Medium', sans-serif",
-        //         size: 28,
-        //         lineHeight: 1.2,
-        //         weight: 'normal',
-        //     },
-        //     padding: {
-        //         top: 20,
-        //         bottom: 20
-        //     },
-        //     align: 'center', // 'start', 'center', 'end'
-        //     position: 'top' // 'top', 'bottom'
-        // }
-        // title.text = 'Доходы';
-
-        // const legend = {
-        //     display: true,
-        //     position: 'top',
-        //     labels: {
-        //         boxWidth: 12,
-        //         boxHeight: 12,
-        //         color: '#000', // цвет текста
-        //         font: {
-        //             size: 12, // размер шрифта
-        //             family: "'Roboto Medium', sans-serif",
-        //         },
-        //         padding: 0,
-        //     },
-        //
-        // }
-        // const config = {
-        //     type: 'pie',
-        //     data: data,
-        //     options: {
-        //         responsive: true,
-        //         plugins: {
-        //             legend: legend,
-        //             // title: title
-        //         }
-        //     },
-        // };
-        // Chart.register(PieController, ArcElement, Tooltip, Legend, Title);
-        // this.myPieChartL = new Chart(this.ctxLeft, config);
-        // this.myPieChartR = new Chart(this.ctxRight, config);
-
-        // this.updatePieChart([40, 30, 30]);
     }
 
     async init() {
         const incomeData = await this.getIncomes();
         const expenseData = await this.getExpenses();
-        this.dataForChart.incomesTitle = incomeData.map(item => item.title);
-        this.dataForChart.expensesTitle = expenseData.map(item => item.title);
+        if (incomeData && expenseData) {
+            this.dataForChart.incomesTitle = incomeData.map(item => item.title);
+            this.dataForChart.expensesTitle = expenseData.map(item => item.title);
+        }
 
-        console.log(this.dataForChart.incomesTitle);
-        console.log(this.dataForChart.expensesTitle);
+        // console.log(this.dataForChart.incomesTitle);
+        // console.log(this.dataForChart.expensesTitle);
 
-
-        const operationData = await this.getOperations();
-        this.dataForChart.operationIncomes = operationData.filter(item => item.type === 'income');
-        this.dataForChart.operationExpenses = operationData.filter(item => item.type === 'expense');
-
-        await this.funcFillData();
-
-        console.log(this.dataForChart.incomesData);
-        console.log(this.dataForChart.expensesData);
-
-        this.showChart(this.dataForChart);
+        this.getOperations().then();
     }
 
     funcFillData() {
-
+        this.dataForChart.incomesData = [];
+        this.dataForChart.expensesData = [];
         for (let i = 0; i < this.dataForChart.incomesTitle.length; i++) {
             let item = 0;
             for (let j = 0; j < this.dataForChart.operationIncomes.length; j++) {
@@ -213,15 +137,14 @@ export class Main {
             }
             this.dataForChart.expensesData.push(item);
         }
-        console.log()
-
     }
 
     async getIncomes() {
         const response = await IncomeService.getIncomes();
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
         return response.incomes;
@@ -231,14 +154,14 @@ export class Main {
         const response = await ExpensesService.getExpenses();
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
         return response.expenses;
     }
 
     funcFilter(action) {
-
         switch (action) {
             case 'Сегодня':
                 this.periodDate.period = '';
@@ -265,20 +188,33 @@ export class Main {
     async getOperations(filter = this.periodDate) {
         const response = await OperationsService.getOperations(filter);
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
-        return response.operations;
+
+        if (response.operations) {
+            this.dataForChart.operationIncomes = response.operations.filter(item => item.type === 'income');
+            this.dataForChart.operationExpenses = response.operations.filter(item => item.type === 'expense');
+
+            await this.funcFillData();
+        }
+
+
+        // console.log(this.dataForChart.incomesData);
+        // console.log(this.dataForChart.expensesData);
+
+        this.showChart(this.dataForChart);
     }
 
 
-
-
-
     showChart(objectData) {
+        this.myPieChartL ? this.myPieChartL.destroy() : null;
+        this.myPieChartR ? this.myPieChartR.destroy() : null;
+
         const dataIncomes = {
             labels: objectData.incomesTitle,
-                // ['Красный', 'Синий', 'Желтый', 'Зеленый', 'Фиолетовый'],
+            // ['Красный', 'Синий', 'Желтый', 'Зеленый', 'Фиолетовый'],
             datasets: [{
                 data: objectData.incomesData,
                 backgroundColor: objectData.color_rgb.slice(0, objectData.incomesData.length),
@@ -334,16 +270,8 @@ export class Main {
         };
 
         Chart.register(PieController, ArcElement, Tooltip, Legend, Title);
-        // this.myPieChartL =
-            new Chart(this.ctxLeft, configIncomes);
-        // this.myPieChartR =
-            new Chart(this.ctxRight, configExpenses);
+        this.myPieChartL = new Chart(this.ctxLeft, configIncomes);
+        this.myPieChartR = new Chart(this.ctxRight, configExpenses);
     }
-
-
-    // updatePieChart(newData) {
-    //     this.myPieChartL.data.datasets[0].data = newData;
-    //     this.myPieChartL.update();
-    // }
 
 }

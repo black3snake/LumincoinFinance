@@ -33,7 +33,8 @@ export class IncomeEdit {
         const response = await IncomeService.getIncome(id);
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 
@@ -59,7 +60,8 @@ export class IncomeEdit {
                 const response = await IncomeService.updateIncome(this.incomeOriginalData.id, changedData);
 
                 if (response.error) {
-                    alert(response.error);
+                    // alert(response.error);
+                    console.log(response.error);
                     return response.redirect ? this.openNewRoute(response.redirect) : null;
                 }
 

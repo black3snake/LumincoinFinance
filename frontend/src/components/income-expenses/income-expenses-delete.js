@@ -16,7 +16,8 @@ export class IncomeExpensesDelete {
         const response = await OperationsService.deleteOperation(id);
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 

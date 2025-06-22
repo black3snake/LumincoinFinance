@@ -30,7 +30,8 @@ export class ExpensesEdit {
         const response = await ExpensesService.getExpense(id);
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 
@@ -56,7 +57,8 @@ export class ExpensesEdit {
                 const response = await ExpensesService.updateExpense(this.expenseOriginalData.id, changedData);
 
                 if (response.error) {
-                    alert(response.error);
+                    // alert(response.error);
+                    console.log(response.error);
                     return response.redirect ? this.openNewRoute(response.redirect) : null;
                 }
 

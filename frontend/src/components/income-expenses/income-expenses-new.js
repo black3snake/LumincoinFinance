@@ -70,7 +70,8 @@ export class IncomeExpensesNew {
         const response = await IncomeService.getIncomes();
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 
@@ -91,7 +92,8 @@ export class IncomeExpensesNew {
         const response = await ExpensesService.getExpenses();
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 
@@ -123,7 +125,8 @@ export class IncomeExpensesNew {
             const response = await OperationsService.createOperation(createData);
 
             if (response.error) {
-                alert(response.error);
+                // alert(response.error);
+                console.log(response.error);
                 return response.redirect ? this.openNewRoute(response.redirect) : null;
             }
 

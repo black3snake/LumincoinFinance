@@ -47,18 +47,20 @@
             <ul class="nav nav-pills ps-0 mb-auto">
                 <li class="mb-1 flex-grow-1">
                     <a class="btn btn-toggle d-inline-flex align-items-center collapsed" data-bs-toggle="collapse"
-                            data-bs-target="#home-collapse" aria-expanded="false" id="menu_category">
+                       data-bs-target="#home-collapse" aria-expanded="false" id="menu_category">
                         Категории
                     </a>
                     <div class="collapse" id="home-collapse" style="">
                         <ul class="btn-toggle-nav list-unstyled">
                             <li>
                                 <a href="/income" class="nav-link d-block text-decoration-none"
-                                   data-bs-auto-close="false">Доходы</a>
+                                   data-bs-auto-close="false">Доходы
+                                </a>
                             </li>
                             <li>
                                 <a href="/expenses" class="nav-link d-block text-decoration-none"
-                                   data-bs-auto-close="false">Расходы</a>
+                                   data-bs-auto-close="false">Расходы
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -66,20 +68,21 @@
             </ul>
         </div>
         <div class="balans">Баланс:
-            <span>500$</span>
+            <span id="balance">500$</span>
         </div>
         <hr>
-        <div class="user-layout d-flex justify-content-between align-items-center">
+        <div class="user-layout" id="dropdown">
             <a href="javascript:void(0)" class="d-flex align-items-center text-decoration-none">
                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
                 <span id="profile-name">Пользователь</span>
             </a>
-            <a href="/logout" id="logout" class="user-layout-logout">
-                <svg height="20" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+            <div class="dropdown-menu justify-content-between align-items-center">
+                <a href="/logout" id="logout">Logout</a>
+                <svg height="20" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">-->
                     <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8"
                           stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
                 </svg>
-            </a>
+            </div>
         </div>
     </aside>
     <!-- Content Wrapper. Contains page content -->

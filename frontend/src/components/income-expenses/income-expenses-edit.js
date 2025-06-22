@@ -81,7 +81,8 @@ export class IncomeExpensesEdit {
         const response = await IncomeService.getIncomes();
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 
@@ -102,7 +103,8 @@ export class IncomeExpensesEdit {
         const response = await ExpensesService.getExpenses();
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 
@@ -123,7 +125,8 @@ export class IncomeExpensesEdit {
         const response = await OperationsService.getOperation(id);
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
         return response.operations;
@@ -165,7 +168,8 @@ export class IncomeExpensesEdit {
                 const response = await OperationsService.updateOperation(this.operation.id, changedData);
 
                 if (response.error) {
-                    alert(response.error);
+                    // alert(response.error);
+                    console.log(response.error);
                     return response.redirect ? this.openNewRoute(response.redirect) : null;
                 }
 

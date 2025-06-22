@@ -16,7 +16,8 @@ export class IncomeDelete {
         const response = await IncomeService.deleteIncome(id);
 
         if (response.error) {
-            alert(response.error);
+            // alert(response.error);
+            console.log(response.error);
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 
