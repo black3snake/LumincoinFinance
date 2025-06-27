@@ -2,9 +2,10 @@
   <div class="container">
     <div class="expensesCreate_title">Создание категории расходов</div>
     <div class="expensesCreate_content d-flex flex-column" id="expensesCreate_content">
-      <input type="text" class="form-control expensesCreate_input" id="expensesCreate_input" placeholder="Название..">
+      <input type="text" class="form-control expensesCreate_input" id="expenseCreate_input" placeholder="Название..">
+      <span id="expenseCreate_input-error" class="error invalid-feedback">Заполните поле</span>
       <div class="expensesCreate_action d-flex">
-        <button type="button" class="btn btn-success" id="expensesCreateBtn">Создать</button>
+        <button type="button" class="btn btn-success" id="expenseCreateBtn">Создать</button>
         <a href="/expenses" class="btn btn-danger" id="expensesCancelBtn">Отмена</a>
       </div>
     </div>

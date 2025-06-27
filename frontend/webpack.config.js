@@ -25,6 +25,27 @@ module.exports = {
     },
     module: {
         rules: [
+            // {
+            //   test: /\.(woff|woff2|eot|ttf|otf)$/,
+            //   use: [
+            //       {
+            //           loader: 'file-loader',
+            //           options: {
+            //               name: '[name].[ext]',
+            //               outputPath: 'fonts',
+            //               publicPath: 'fonts',
+            //           }
+            //       }
+            //   ]
+            // },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename:  'fonts/[name][ext]', // Куда будут складываться шрифты
+                },
+            },
+
             {
                 test: /\.scss$/i,
                 use: [
@@ -51,7 +72,7 @@ module.exports = {
             patterns: [
                 { from: "./src/templates", to: "./templates" },
                 { from: "./src/static/images", to: "./images" },
-                { from: "./src/fonts", to: "./fonts" },
+                // { from: "./src/fonts", to: "./fonts" },
                 { from: "./.env", to: "./" },
                 { from: "./node_modules/bootstrap/dist/css/bootstrap.min.css", to: "./css" },
                 { from: "./node_modules/bootstrap/dist/js/bootstrap.min.js", to: "./js" },
@@ -62,7 +83,7 @@ module.exports = {
                 { from: "./node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css", to: "./css" },
                 { from: "./node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min.js", to: "./js" },
                 // { from: "./node_modules/datatables.net-dt/css/dataTables.dataTables.css", to: "./css" },
-                // { from: "./node_modules/datatables/media/js/jquery.dataTables.min.js", to: "./js" },
+                { from: "./node_modules/datatables/media/js/jquery.dataTables.min.js", to: "./js" },
                 // { from: "./node_modules/datatables.net-dt/js/dataTables.dataTables.js", to: "./js" },
             ],
         }),

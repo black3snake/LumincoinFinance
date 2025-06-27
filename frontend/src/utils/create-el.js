@@ -12,18 +12,19 @@ export class CreateEl {
 
         const cardTitleElement = document.createElement("div");
         cardTitleElement.classList.add('card_title');
-        cardTitleElement.innerText = actions;
+        cardTitleElement.innerText = actions.title;
 
         const cardActionElement = document.createElement("div");
         cardActionElement.classList.add('card_action', 'd-flex');
         const buttonEditElement = document.createElement("a");
         buttonEditElement.classList.add('btn', 'btn-primary');
         buttonEditElement.innerText = "Редактировать";
-        buttonEditElement.setAttribute('href', href);  // TODO будет формироваться через id
+        buttonEditElement.setAttribute('href', href + '/edit?id=' + actions.id);  // TODO будет формироваться через id
 
         const buttonDeleteElement = document.createElement("a");
         buttonDeleteElement.classList.add('btn', 'btn-danger');
         buttonDeleteElement.innerText = 'Удалить';
+        buttonDeleteElement.setAttribute('href', href + '/delete?id='+ actions.id);
 
         cardActionElement.appendChild(buttonEditElement);
         cardActionElement.appendChild(buttonDeleteElement);
@@ -48,4 +49,11 @@ export class CreateEl {
         this.cardElement.appendChild(this.cardBodyElement);
         return this.cardElement;
     }
+
+    static operationCreateOption(path) {
+
+
+    }
+
+
 }

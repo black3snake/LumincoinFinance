@@ -1,5 +1,6 @@
 @use "layout";
 @use "income-expenses";
+@use "expenses";
 @use "login";
 @use "signup";
 @import url('datatables.net-dt');
@@ -8,6 +9,7 @@
 @mixin containerBody {
     margin-top: 80px;
     padding-left: 61px;
+    margin-left: unset;
 }
 
 * {
@@ -74,6 +76,13 @@ body {
 
         .main_switch {
             flex-wrap: wrap;
+            //margin-bottom: 40px;
+
+            label.btn {
+                border-radius: 6px;
+                width: 100px;
+                flex: unset;
+            }
 
             button {
                 width: 100px;
@@ -328,121 +337,6 @@ body {
             .incomeEdit_action {
                 gap: 10.5px;
                 margin-top: 20px;
-
-            }
-        }
-    }
-}
-
-.expensesList {
-    .container {
-        @include containerBody;
-
-        .expensesList_title {
-            font-size: 40px;
-            margin-bottom: 40px;
-        }
-
-        .expensesList_content {
-            gap: 20px 20px;
-
-            .card {
-                border-radius: 12px;
-                border: 1px solid #CED4DA;
-
-                .card_body {
-                    padding: 20px 20px 20px 20px;
-                    min-width: 360px;
-
-                    .card_title {
-                        font-size: 28px;
-                        color: #290661;
-                        line-height: 1;
-                        margin-bottom: 10px;
-                    }
-
-                    .card_action {
-                        gap: 10px;
-
-                        .card_action_btn {
-                            font-size: 14px;
-                            text-align: center;
-                        }
-                    }
-
-                    .card_plus-text {
-                        color: #CED4DA;
-                        font-size: 28px;
-                        cursor: pointer;
-                        text-decoration: none;
-                        min-width: 60px;
-                    }
-                }
-            }
-
-            .card.card_plus {
-                flex-direction: row;
-                align-items: center;
-
-                .card_body.card_plus {
-                    flex-direction: row;
-                    justify-content: center;
-                }
-            }
-        }
-    }
-}
-
-.expensesCreate {
-    .container {
-        @include containerBody;
-
-        .expensesCreate_title {
-            font-size: 40px;
-            margin-bottom: 40px;
-        }
-
-        .expensesCreate_content {
-
-            .expensesCreate_input {
-                width: 397px;
-                margin-bottom: 20px;
-
-                &::placeholder {
-                    color: #6C757D;
-                }
-            }
-
-            .expensesCreate_action {
-                gap: 10.5px;
-
-            }
-        }
-    }
-}
-
-.expensesEdit {
-    .container {
-        @include containerBody;
-
-        .expensesEdit_title {
-            font-size: 40px;
-            margin-bottom: 40px;
-        }
-
-        .expensesEdit_content {
-
-            .expensesEdit_input {
-                width: 397px;
-                margin-bottom: 20px;
-
-                &::placeholder {
-                    color: #6C757D;
-                }
-            }
-
-            .expensesEdit_action {
-                gap: 10.5px;
 
             }
         }

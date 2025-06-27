@@ -1,4 +1,5 @@
 import {CreateEl} from "../../utils/create-el";
+import {ExpensesService} from "../../services/expenses-service";
 
 export class ExpensesList {
     constructor(openNewRoute) {
@@ -16,7 +17,7 @@ export class ExpensesList {
         })
 
 
-        this.getExpensesList();
+        this.getExpensesList().then();
 
         document.querySelectorAll('.card_action .btn-danger').forEach(action => {
             action.addEventListener('click', () => {
@@ -26,21 +27,25 @@ export class ExpensesList {
 
     }
 
-    getExpensesList() {
-        const array = [
-            'Еда', 'Жилье', 'Здоровье',
-            'Кафе', 'Авто', 'Одежда',
-            'Развлечения', 'Счета', 'Спорт'
-        ]
+    async getExpensesList() {
+        // const array = [
+        //     'Еда', 'Жилье', 'Здоровье',
+        //     'Кафе', 'Авто', 'Одежда',
+        //     'Развлечения', 'Счета', 'Спорт'
+        // ]
+        const response = await ExpensesService.getExpenses();
 
-        return this.showRecords(array);
+        if (response.error) {
+            // alert(response.error);
+            console.log(response.error);
+            return response.redirect ? this.openNewRoute(response.redirect) : null;
+        }
+        return this.showRecords(response.expenses);
     }
 
     showRecords(expenses) {
-
         for (let i = 0; i < expenses.length; i++) {
-            let cardElement = CreateEl.createElementsList(expenses[i], '/expenses/edit');
-            this.expensesListContentElement.appendChild(cardElement);
+            this.expensesListContentElement.appendChild(CreateEl.createElementsList(expenses[i], '/expenses'));
         }
         this.expensesListContentElement.appendChild(CreateEl.createElementNew('/expenses/create'));
     }

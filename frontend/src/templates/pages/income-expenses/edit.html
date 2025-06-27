@@ -10,27 +10,21 @@
                 </select>
             </div>
             <div class="col-md-4 mb-2">
-                <select class="form-control" id="incomeExpensesEdit_categorySelect">
-                    <option value="0" disabled selected hidden>Категория...</option>
-                    <option value="income">Депозиты</option>
-                    <option value="expense">Зарплата</option>
-                    <option value="expense">Сбережения</option>
-                    <option value="expense">Инвестиции</option>
-                </select>
+                <select class="form-control" id="incomeExpensesEdit_categorySelect"></select>
+                <span id="incomeExpensesEdit_categorySelect-error" class="error invalid-feedback">Пожалуйста заполните поле</span>
             </div>
             <div class="col-md-4 mb-2">
-                <input type="number" class="form-control income-expenses-edit_inputAmount" id="incomeExpensesEdit_amount"
-                       placeholder="Сумма в $...">
+                <input type="number" class="form-control income-expenses-edit_inputAmount" id="incomeExpensesEdit_amount" placeholder="Сумма в $...">
+                <span id="incomeExpensesEdit_amount-error" class="error invalid-feedback">Пожалуйста заполните поле</span>
             </div>
             <div class="col-md-4 mb-2">
-                <input type="text" class="form-control datepicker income-expenses-edit_inputDate" id="incomeExpensesEdit_date"
-                       placeholder="Дата...">
+                <input type="text" class="form-control datepicker income-expenses-edit_inputDate" id="incomeExpensesEdit_date" placeholder="Дата...">
+                <span id="incomeExpensesEdit_date-error" class="error invalid-feedback">Пожалуйста заполните поле</span>
             </div>
             <div class="col-md-4 mb-3">
-                <input type="text" class="form-control income-expenses-edit_inputComment" id="incomeExpensesEdit_comment"
-                       placeholder="Комментарий...">
+                <input type="text" class="form-control income-expenses-edit_inputComment" id="incomeExpensesEdit_comment" placeholder="Комментарий...">
+                <span id="incomeExpensesEdit_comment_date-error" class="error invalid-feedback">Пожалуйста заполните поле</span>
             </div>
-
             <div class="income-expenses-edit_action d-flex mt-1 gap-2">
                 <button type="button" class="btn btn-success me-1" id="incomeExpensesEditSaveBtn">Сохранить</button>
                 <a href="/income-expenses" class="btn btn-danger" id="incomeExpensesEditCancelBtn">Отмена</a>

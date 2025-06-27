@@ -1,7 +1,7 @@
 import {UrlUtils} from "../../utils/url-utils";
-import {IncomeService} from "../../services/income-service";
+import {ExpensesService} from "../../services/expenses-service";
 
-export class IncomeDelete {
+export class ExpensesDelete {
     constructor(openNewRoute) {
         this.openNewRoute = openNewRoute;
         const id = UrlUtils.getUrlParam('id');
@@ -9,11 +9,11 @@ export class IncomeDelete {
             return this.openNewRoute('/');
         }
 
-        this.deleteIncome(id).then();
+        this.deleteExpense(id).then();
     }
 
-    async deleteIncome(id) {
-        const response = await IncomeService.deleteIncome(id);
+    async deleteExpense(id) {
+        const response = await ExpensesService.deleteExpense(id);
 
         if (response.error) {
             // alert(response.error);
@@ -21,6 +21,6 @@ export class IncomeDelete {
             return response.redirect ? this.openNewRoute(response.redirect) : null;
         }
 
-        return this.openNewRoute('/income');
+        return this.openNewRoute('/expenses');
     }
 }
